@@ -27,6 +27,9 @@ public class Biometrics implements Serializable {
 	@Column(name = "AGE")
 	private Integer age;
 
+	@Column(name = "GENDER")
+	private String gender;
+
 	@Column(name = "BODY_MASS_INDEX")
 	private Double bodyMassIndex;
 
@@ -45,37 +48,40 @@ public class Biometrics implements Serializable {
 	public Biometrics() {
 	}
 
-	public Biometrics(Long id, Long height, Double weight, Integer age, Double bodyMassIndex,
+	public Biometrics(Long id, Long height, Double weight, Integer age, String gender, Double bodyMassIndex,
 			Double bodyFatPercentage, Double totalBodyWaterPercentage, Double leanBodyMass) {
 		super();
 		this.id = id;
 		this.height = height;
 		this.weight = weight;
 		this.age = age;
+		this.gender = gender;
 		this.bodyMassIndex = bodyMassIndex;
 		this.bodyFatPercentage = bodyFatPercentage;
 		this.totalBodyWaterPercentage = totalBodyWaterPercentage;
 		this.leanBodyMass = leanBodyMass;
 	}
 
-	public Biometrics(Long height, Double weight, Integer age, Double bodyMassIndex,
+	public Biometrics(Long height, Double weight, Integer age, String gender, Double bodyMassIndex,
 			Double bodyFatPercentage, Double totalBodyWaterPercentage, Double leanBodyMass) {
 		super();
 		this.height = height;
 		this.weight = weight;
 		this.age = age;
+		this.gender = gender;
 		this.bodyMassIndex = bodyMassIndex;
 		this.bodyFatPercentage = bodyFatPercentage;
 		this.totalBodyWaterPercentage = totalBodyWaterPercentage;
 		this.leanBodyMass = leanBodyMass;
 	}
 
-	public Biometrics(Long height, Double weight, Integer age, Double bodyMassIndex,
+	public Biometrics(Long height, Double weight, Integer age, String gender, Double bodyMassIndex,
 			Double bodyFatPercentage, Double totalBodyWaterPercentage, Double leanBodyMass, User user) {
 		super();
 		this.height = height;
 		this.weight = weight;
 		this.age = age;
+		this.gender = gender;
 		this.bodyMassIndex = bodyMassIndex;
 		this.bodyFatPercentage = bodyFatPercentage;
 		this.totalBodyWaterPercentage = totalBodyWaterPercentage;
@@ -113,6 +119,14 @@ public class Biometrics implements Serializable {
 
 	public Integer getAge() {
 		return this.age;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
 	public void setBodyMassIndex(Double bodyMassIndex) {
@@ -157,9 +171,9 @@ public class Biometrics implements Serializable {
 
 	@Override
 	public String toString() {
-		return String.format(
-				"USER-Biometrics[id=%d, height=%d, weight=%f, age=%d, bodyMassIndex=%f, bodyFatPercentage=%f, totalBodyWaterPercentage=%f, leanBodyMass=%f]",
-				this.id, this.height, this.weight, this.age, this.bodyMassIndex, this.bodyFatPercentage,
-				this.totalBodyWaterPercentage, this.leanBodyMass);
+		return "Biometrics [age=" + age + ", bodyFatPercentage=" + bodyFatPercentage + ", bodyMassIndex="
+				+ bodyMassIndex + ", gender=" + gender + ", height=" + height + ", id=" + id + ", leanBodyMass="
+				+ leanBodyMass + ", totalBodyWaterPercentage=" + totalBodyWaterPercentage + ", user=" + user
+				+ ", weight=" + weight + "]";
 	}
 }
