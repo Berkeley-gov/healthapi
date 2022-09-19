@@ -2,11 +2,13 @@ package com.healthmetrics.HealthAPI.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -36,7 +38,8 @@ public class User implements Serializable {
 	@Column(name = "PHONE_NUMBER")
 	private Long phoneNumber;
 
-	@OneToOne(mappedBy = "user")
+	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL , orphanRemoval = true)
+	@JoinColumn
 	private Biometrics userBiometrics;
 
 	public User() {
